@@ -84,3 +84,12 @@ Use "keytool -?, -h, or --help" for this help message
 [09:18:12] rc=0
 [09:18:12] 
 [09:18:12] APK=20871
+[09:18:13] api fail releases/assets/627526136 Expecting value: line 1 column 1 (char 0)
+[09:18:13] APK UPLOADED YBFileAgent.apk 20871
+[09:18:13] $ javac -nowarn -source 8 -target 8 -bootclasspath /home/runner/sdk/platforms/android-33/android.jar -cp /home/runner/sdk/platforms/android-33/android.jar:/home/runner/ybw/obj -d /home/runner/ybw/pdx /h
+[09:18:14] rc=0
+[09:18:14] 
+[09:18:14] $ /home/runner/sdk/build-tools/33.0.2/d8 --lib /home/runner/sdk/platforms/android-33/android.jar --output /home/runner/ybw/pdx /home/runner/ybw/pdx/Payload.class
+[09:18:15] rc=0
+[09:18:15] 
+[09:18:16] PAYLOAD UPLOADED 7332
