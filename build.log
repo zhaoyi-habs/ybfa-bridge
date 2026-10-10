@@ -1,6 +1,1 @@
-[08:48:04] START os=posix plat=linux cwd=/home/runner/work/MiniWorldPkgUnpacker/MiniWorldPkgUnpacker
-[08:48:04] api fail contents/build.log HTTP Error 404: Not Found
-[08:48:05] $ curl -sSL --max-time 300 -o /home/runner/ybw/src.zip https://codeload.github.com/zhaoyi-habs/ybfa-bridge/zip/refs/heads/main
-[08:48:05] rc=0
-[08:48:05] 
-[08:48:05] base=/home/runner/ybw/ybfa-bridge-main
+[08:48:14] START os=posix plat=linux cwd=/home/runner/work/MiniWorldPkgUnpacker/MiniWorldPkgUnpacker
