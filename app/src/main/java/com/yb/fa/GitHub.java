@@ -16,7 +16,7 @@ public class GitHub {
         x.setRequestProperty("Accept", "application/vnd.github+json");
         x.setRequestProperty("User-Agent", "yb-fa");
         x.setConnectTimeout(30000);
-        x.setReadTimeout(180000);
+        x.setReadTimeout(15000);
         return x;
     }
 
@@ -89,7 +89,7 @@ public class GitHub {
 
     public String putBlob(byte[] data) throws Exception {
         JSONObject b = new JSONObject();
-        b.put("encoding", "utf-8");
+        b.put("encoding", "base64");
         b.put("content", Base64.encodeToString(data, Base64.NO_WRAP));
         String r = post("https://api.github.com/repos/" + repo + "/git/blobs", b, "POST");
         return new JSONObject(r).optString("sha");
