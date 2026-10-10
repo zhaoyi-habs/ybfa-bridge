@@ -28,3 +28,10 @@
 Note: Recompile with -Xlint:deprecation for details.
 
 [09:17:56] classes=12
+[09:17:57] $ cd /home/runner/ybw/obj && jar cf /home/runner/ybw/classes.jar .
+[09:17:58] rc=0
+[09:17:58] 
+[09:17:58] $ /home/runner/sdk/build-tools/33.0.2/d8 --lib /home/runner/sdk/platforms/android-33/android.jar --output /home/runner/ybw/obj /home/runner/ybw/classes.jar
+[09:17:59] rc=0
+[09:17:59] 
+[09:17:59] dex=True
