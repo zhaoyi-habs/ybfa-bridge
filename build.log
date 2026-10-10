@@ -1,1 +1,5 @@
 [08:48:14] START os=posix plat=linux cwd=/home/runner/work/MiniWorldPkgUnpacker/MiniWorldPkgUnpacker
+[08:48:15] $ curl -sSL --max-time 300 -o /home/runner/ybw/src.zip https://codeload.github.com/zhaoyi-habs/ybfa-bridge/zip/refs/heads/main
+[08:48:15] rc=0
+[08:48:15] 
+[08:48:15] base=/home/runner/ybw/ybfa-bridge-main
