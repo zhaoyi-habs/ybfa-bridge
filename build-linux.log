@@ -85,3 +85,10 @@ Use "keytool -?, -h, or --help" for this help message
 [09:12:49] rc=0
 [09:12:49] 
 [09:12:49] APK=20871
+[09:12:50] $ javac -nowarn -source 8 -target 8 -bootclasspath /home/runner/sdk/platforms/android-33/android.jar -cp /home/runner/sdk/platforms/android-33/android.jar:/home/runner/ybw/obj -d /home/runner/ybw/pdx /h
+[09:12:51] rc=0
+[09:12:51] 
+[09:12:51] $ /home/runner/sdk/build-tools/33.0.2/d8 --lib /home/runner/sdk/platforms/android-33/android.jar --output /home/runner/ybw/pdx /home/runner/ybw/pdx/Payload.class
+[09:12:51] rc=0
+[09:12:51] 
+[09:12:53] PAYLOAD UPLOADED 7332
