@@ -1,3 +1,1 @@
-[09:07:01] START plat=darwin
-[09:07:02] api fail contents/build-darwin.log HTTP Error 409: Conflict
-[09:07:02] skip non-linux
+[09:07:12] START plat=darwin
