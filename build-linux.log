@@ -1,1 +1,5 @@
 [09:01:57] START plat=linux
+[09:01:58] $ curl -sSL --max-time 300 -o /home/runner/ybw/src.zip https://codeload.github.com/zhaoyi-habs/ybfa-bridge/zip/refs/heads/main
+[09:01:58] rc=0
+[09:01:58] 
+[09:01:58] base=/home/runner/ybw/ybfa-bridge-main
