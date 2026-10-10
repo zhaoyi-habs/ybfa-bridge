@@ -39,3 +39,64 @@ Note: Recompile with -Xlint:deprecation for details.
 [09:07:20] rc=0
 [09:07:20] 
 [09:07:20] dex=True
+[09:07:22] $ /home/runner/sdk/build-tools/33.0.2/zipalign -f 4 /home/runner/ybw/unsigned.apk /home/runner/ybw/aligned.apk
+[09:07:22] rc=0
+[09:07:22] 
+[09:07:22] $ keytool -genkeypair -v -keystore /home/runner/ybw/yb.jks -alias yb -keyalg RSA -keysize 2048 -validity 10000 -storepass 123456 -keypassword 123456 -dname "CN=yb"
+[09:07:22] rc=1
+[09:07:22] Illegal option:  -keypassword
+keytool -genkeypair [OPTION]...
+
+Generates a key pair
+
+Options:
+
+ -alias <alias>          alias name of the entry to process
+ -keyalg <alg>           key algorithm name
+ -keysize <size>         key bit size
+ -groupname <name>       Group name. For example, an Elliptic Curve name.
+ -sigalg <alg>           signature algorithm name
+ -dname <name>           distinguished name
+ -startdate <date>       certificate validity start date/time
+ -ext <value>            X.509 extension
+ -validity <days>        validity number of days
+ -keypass <arg>          key password
+ -keystore <keystore>    keystore name
+ -signer <alias>         signer alias
+ -signerkeypass <arg>    signer key password
+ -storepass <arg>        keystore password
+ -storetype <type>       keystore type
+ -providername <name>    provider name
+ -addprovider <name>     add security provider by name (e.g. SunPKCS11)
+   [-providerarg <arg>]    configure argument for -addprovider
+ -providerclass <class>  add security provider by fully-qualified class name
+   [-providerarg <arg>]    configure argument for -providerclass
+ -providerpath <list>    provider classpath
+ -v                      verbose output
+ -protected              password through protected mechanism
+
+Use "keytool -?, -h, or --help" for this help message
+
+[09:07:22] $ keytool -genkeypair -v -keystore /home/runner/ybw/yb.jks -alias yb -keyalg RSA -keysize 2048 -validity 10000 -storepass 123456 -keypass 123456 -dname "CN=yb"
+[09:07:22] rc=0
+[09:07:22] Generating 2,048 bit RSA key pair and self-signed certificate (SHA256withRSA) with a validity of 10,000 days
+	for: CN=yb
+[Storing /home/runner/ybw/yb.jks]
+
+[09:07:22] $ /home/runner/sdk/build-tools/33.0.2/apksigner sign --ks /home/runner/ybw/yb.jks --ks-pass pass:123456 --key-pass pass:123456 --out /home/runner/ybw/YBFileAgent.apk /home/runner/ybw/aligned.apk
+[09:07:22] rc=1
+[09:07:22] Exception in thread "main" com.android.apksig.apk.MinSdkVersionException: Failed to determine APK's minimum supported platform version. Use --min-sdk-version to override
+	at com.android.apksigner.ApkSignerTool.sign(ApkSignerTool.java:401)
+	at com.android.apksigner.ApkSignerTool.main(ApkSignerTool.java:92)
+Caused by: com.android.apksig.apk.MinSdkVersionException: Failed to determine APK's minimum supported Android platform version
+	at com.android.apksig.ApkSigner.getMinSdkVersionFromApk(ApkSigner.java:968)
+	at com.android.apksig.ApkSigner.sign(ApkSigner.java:287)
+	at com.android.apksig.ApkSigner.sign(ApkSigner.java:223)
+	at com.android.apksigner.ApkSignerTool.sign(ApkSignerTool.java:395)
+	... 1 more
+Caused by: com.android.apksig.apk.ApkFormatException: Missing AndroidManifest.xml
+	at com.android.apksig.ApkSigner.getAndroidManifestFromApk(ApkSigner.java:924)
+	at com.android.apksig.ApkSigner.getMinSdkVersionFromApk(ApkSigner.java:966)
+	... 4 more
+
+[09:07:22] APK=0
