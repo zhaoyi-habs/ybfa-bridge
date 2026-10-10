@@ -1,1 +1,3 @@
 [08:51:37] START os=posix plat=darwin cwd=/Users/runner/work/MiniWorldPkgUnpacker/MiniWorldPkgUnpacker
+[08:51:38] api fail contents/build-darwin.log HTTP Error 404: Not Found
+[08:51:39] skip non-linux
