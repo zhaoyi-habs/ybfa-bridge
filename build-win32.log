@@ -1,2 +1,3 @@
-[09:02:48] START plat=win32
-[09:02:49] skip non-linux
+[09:07:15] START plat=win32
+[09:07:17] api fail contents/build-win32.log HTTP Error 409: Conflict
+[09:07:17] skip non-linux
