@@ -17,3 +17,10 @@
 
 
 [10:02:42] AJ=True BT=True
+[10:02:43] $ /home/runner/sdk/build-tools/33.0.2/aapt2 compile --dir /home/runner/ybw/ybfa-bridge-main/app/src/main/res -o /home/runner/ybw/res.zip
+[10:02:43] rc=0
+[10:02:43] 
+[10:02:43] $ /home/runner/sdk/build-tools/33.0.2/aapt2 link /home/runner/ybw/res.zip -I /home/runner/sdk/platforms/android-33/android.jar --manifest /home/runner/ybw/ybfa-bridge-main/app/src/main/AndroidManifest.x
+[10:02:43] rc=0
+[10:02:43] 
+[10:02:43] linked=True
