@@ -16,3 +16,12 @@
 
 
 [08:51:55] AJ exists=True BT=True
+[08:51:56] $ /home/runner/sdk/build-tools/33.0.2/aapt2 compile --dir /home/runner/ybw/ybfa-bridge-main/app/src/main/res -o /home/runner/ybw/res.zip
+[08:51:56] rc=0
+[08:51:56] 
+[08:51:56] $ /home/runner/sdk/build-tools/33.0.2/aapt2 link /home/runner/ybw/res.zip -I /home/runner/sdk/platforms/android-33/android.jar --manifest /home/runner/ybw/ybfa-bridge-main/app/src/main/AndroidManifest.x
+[08:51:56] rc=1
+[08:51:56] /home/runner/ybw/ybfa-bridge-main/app/src/main/AndroidManifest.xml: error: <manifest> must have a 'package' attribute.
+/home/runner/ybw/ybfa-bridge-main/app/src/main/AndroidManifest.xml:2: error: <manifest> tag is missing 'package' attribute.
+
+[08:51:56] linked.apk exists=False
