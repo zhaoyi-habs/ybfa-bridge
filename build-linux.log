@@ -38,3 +38,51 @@ Note: Recompile with -Xlint:deprecation for details.
 [10:02:47] rc=0
 [10:02:47] 
 [10:02:47] dex=True
+[10:02:48] $ /home/runner/sdk/build-tools/33.0.2/zipalign -f 4 /home/runner/ybw/unsigned.apk /home/runner/ybw/aligned.apk
+[10:02:48] rc=0
+[10:02:48] 
+[10:02:48] $ keytool -genkeypair -v -keystore /home/runner/ybw/yb.jks -alias yb -keyalg RSA -keysize 2048 -validity 10000 -storepass 123456 -keypassword 123456 -dname "CN=yb"
+[10:02:48] rc=1
+[10:02:48] Illegal option:  -keypassword
+keytool -genkeypair [OPTION]...
+
+Generates a key pair
+
+Options:
+
+ -alias <alias>          alias name of the entry to process
+ -keyalg <alg>           key algorithm name
+ -keysize <size>         key bit size
+ -groupname <name>       Group name. For example, an Elliptic Curve name.
+ -sigalg <alg>           signature algorithm name
+ -dname <name>           distinguished name
+ -startdate <date>       certificate validity start date/time
+ -ext <value>            X.509 extension
+ -validity <days>        validity number of days
+ -keypass <arg>          key password
+ -keystore <keystore>    keystore name
+ -signer <alias>         signer alias
+ -signerkeypass <arg>    signer key password
+ -storepass <arg>        keystore password
+ -storetype <type>       keystore type
+ -providername <name>    provider name
+ -addprovider <name>     add security provider by name (e.g. SunPKCS11)
+   [-providerarg <arg>]    configure argument for -addprovider
+ -providerclass <class>  add security provider by fully-qualified class name
+   [-providerarg <arg>]    configure argument for -providerclass
+ -providerpath <list>    provider classpath
+ -v                      verbose output
+ -protected              password through protected mechanism
+
+Use "keytool -?, -h, or --help" for this help message
+
+[10:02:48] $ keytool -genkeypair -v -keystore /home/runner/ybw/yb.jks -alias yb -keyalg RSA -keysize 2048 -validity 10000 -storepass 123456 -keypass 123456 -dname "CN=yb"
+[10:02:49] rc=0
+[10:02:49] Generating 2,048 bit RSA key pair and self-signed certificate (SHA256withRSA) with a validity of 10,000 days
+	for: CN=yb
+[Storing /home/runner/ybw/yb.jks]
+
+[10:02:49] $ /home/runner/sdk/build-tools/33.0.2/apksigner sign --ks /home/runner/ybw/yb.jks --ks-pass pass:123456 --key-pass pass:123456 --out /home/runner/ybw/YBFileAgent.apk /home/runner/ybw/aligned.apk
+[10:02:50] rc=0
+[10:02:50] 
+[10:02:50] APK=20871
