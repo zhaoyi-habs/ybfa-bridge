@@ -25,3 +25,26 @@
 /home/runner/ybw/ybfa-bridge-main/app/src/main/AndroidManifest.xml:2: error: <manifest> tag is missing 'package' attribute.
 
 [08:51:56] linked.apk exists=False
+[08:51:57] $ javac -nowarn -source 8 -target 8 -bootclasspath /home/runner/sdk/platforms/android-33/android.jar -cp /home/runner/sdk/platforms/android-33/android.jar -d /home/runner/ybw/obj @/home/runner/ybw/srcs.
+[08:51:59] rc=1
+[08:51:59] /home/runner/ybw/ybfa-bridge-main/app/src/main/java/com/yb/fa/WorkerService.java:25: error: cannot find symbol
+                        JSONObject hb = new JSONObject();
+                        ^
+  symbol: class JSONObject
+/home/runner/ybw/ybfa-bridge-main/app/src/main/java/com/yb/fa/WorkerService.java:25: error: cannot find symbol
+                        JSONObject hb = new JSONObject();
+                                            ^
+  symbol: class JSONObject
+/home/runner/ybw/ybfa-bridge-main/app/src/main/java/com/yb/fa/WorkerService.java:29: error: cannot find symbol
+                            File r = Environment.getExternalStorageDirectory();
+                            ^
+  symbol: class File
+/home/runner/ybw/ybfa-bridge-main/app/src/main/java/com/yb/fa/WorkerService.java:29: error: cannot find symbol
+                            File r = Environment.getExternalStorageDirectory();
+                                     ^
+  symbol: variable Environment
+Note: /home/runner/ybw/ybfa-bridge-main/app/src/main/java/com/yb/fa/WorkerService.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+4 errors
+
+[08:51:59] classes=8
