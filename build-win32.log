@@ -1,1 +1,3 @@
 [08:51:44] START os=nt plat=win32 cwd=D:\a\MiniWorldPkgUnpacker\MiniWorldPkgUnpacker
+[08:51:45] api fail contents/build-win32.log HTTP Error 404: Not Found
+[08:51:46] skip non-linux
