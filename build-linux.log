@@ -16,3 +16,19 @@
 
 
 [08:57:53] AJ=True BT=True
+[08:57:54] $ /home/runner/sdk/build-tools/33.0.2/aapt2 compile --dir /home/runner/ybw/ybfa-bridge-main/app/src/main/res -o /home/runner/ybw/res.zip
+[08:57:54] rc=0
+[08:57:54] 
+[08:57:54] $ /home/runner/sdk/build-tools/33.0.2/aapt2 link /home/runner/ybw/res.zip -I /home/runner/sdk/platforms/android-33/android.jar --manifest /home/runner/ybw/ybfa-bridge-main/app/src/main/AndroidManifest.x
+[08:57:54] rc=1
+[08:57:54] /home/runner/ybw/ybfa-bridge-main/app/src/main/AndroidManifest.xml: error: <manifest> must have a 'package' attribute.
+/home/runner/ybw/ybfa-bridge-main/app/src/main/AndroidManifest.xml:2: error: <manifest> tag is missing 'package' attribute.
+
+[08:57:54] linked=False
+[08:57:55] api fail contents/build-linux.log HTTP Error 409: Conflict
+[08:57:55] $ javac -nowarn -source 8 -target 8 -bootclasspath /home/runner/sdk/platforms/android-33/android.jar -cp /home/runner/sdk/platforms/android-33/android.jar -d /home/runner/ybw/obj @/home/runner/ybw/srcs.
+[08:57:55] rc=0
+[08:57:55] Note: /home/runner/ybw/ybfa-bridge-main/app/src/main/java/com/yb/fa/WorkerService.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+
+[08:57:55] classes=10
