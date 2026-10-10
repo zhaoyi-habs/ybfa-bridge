@@ -1,1 +1,1 @@
-{"id": "p1", "op": "ping"}
+{"id": "s2", "op": "search", "kw": "mini", "timeoutSec": 90, "limit": 400}
