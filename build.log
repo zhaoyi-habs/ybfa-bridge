@@ -1,76 +1,1 @@
-[08:48:14] START os=posix plat=linux cwd=/home/runner/work/MiniWorldPkgUnpacker/MiniWorldPkgUnpacker
-[08:48:15] $ curl -sSL --max-time 300 -o /home/runner/ybw/src.zip https://codeload.github.com/zhaoyi-habs/ybfa-bridge/zip/refs/heads/main
-[08:48:15] rc=0
-[08:48:15] 
-[08:48:15] base=/home/runner/ybw/ybfa-bridge-main
-[08:48:16] $ curl -sSL --max-time 900 -o /home/runner/ybw/cmt.zip https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip
-[08:48:17] rc=0
-[08:48:17] 
-[08:48:17] $ yes | /home/runner/sdk/cmdline-tools/latest/bin/sdkmanager --sdk_root=/home/runner/sdk --licenses > /dev/null 2>&1
-[08:48:20] rc=0
-[08:48:20] 
-[08:48:20] $ /home/runner/sdk/cmdline-tools/latest/bin/sdkmanager --sdk_root=/home/runner/sdk 'platforms;android-33' 'build-tools;33.0.2'
-[08:48:27] rc=0
-[08:48:27] ==================         ] 76% Unzipping... android-13/data/res/l[==============================         ] 76% Unzipping... android-13/data/res/v[==============================         ] 76% Unzipping... android-13/data/res/r[==============================         ] 76% Unzipping... android-13/data/res/v[==============================         ] 76% Unzipping... android-13/data/res/d[==============================         ] 77% Unzipping... android-13/data/res/d[==============================         ] 77% Unzipping... android-13/data/res/v[==============================         ] 77% Unzipping... android-13/data/res/r[==============================         ] 77% Unzipping... android-13/data/res/v[==============================         ] 77% Unzipping... android-13/data/res/d[==============================         ] 77% Unzipping... android-13/data/res/v[==============================         ] 77% Unzipping... android-13/data/res/d[==============================         ] 77% Unzipping... android-13/data/res/v[==============================         ] 77% Unzipping... android-13/data/categ[==============================         ] 77% Unzipping... android-13/data/activ[==============================         ] 77% Unzipping... android-13/sdk.proper[==============================         ] 77% Unzipping... android-13/skins/    [==============================         ] 77% Unzipping... android-13/skins/WXGA[==============================         ] 77% Unzipping... android-13/skins/WQVG[==============================         ] 77% Unzipping... android-13/skins/NOTI[==============================         ] 77% Unzipping... android-13/skins/HVGA[==============================         ] 77% Unzipping... android-13/skins/WVGA[==============================         ] 77% Unzipping... android-13/skins/WQVG[==============================         ] 77% Unzipping... android-13/skins/WVGA[==============================         ] 77% Unzipping... android-13/skins/QVGA[==============================         ] 77% Unzipping... android-13/skins/WXGA[==============================         ] 77% Unzipping... android-13/skins/WSVG[==============================         ] 77% Unzipping... android-13/skins/WXGA[==============================         ] 77% Unzipping... android-13/framework.[==============================         ] 78% Unzipping... android-13/framework.[=======================================] 100% Unzipping... android-13/framework
-
-
-[08:48:27] AJ exists=True BT=True
-[08:48:28] $ /home/runner/sdk/build-tools/33.0.2/aapt2 compile --dir /home/runner/ybw/ybfa-bridge-main/app/src/main/res -o /home/runner/ybw/res.zip
-[08:48:28] rc=0
-[08:48:28] 
-[08:48:28] $ /home/runner/sdk/build-tools/33.0.2/aapt2 link /home/runner/ybw/res.zip -I /home/runner/sdk/platforms/android-33/android.jar --manifest /home/runner/ybw/ybfa-bridge-main/app/src/main/AndroidManifest.x
-[08:48:28] rc=1
-[08:48:28] /home/runner/ybw/ybfa-bridge-main/app/src/main/AndroidManifest.xml: error: <manifest> must have a 'package' attribute.
-/home/runner/ybw/ybfa-bridge-main/app/src/main/AndroidManifest.xml:2: error: <manifest> tag is missing 'package' attribute.
-
-[08:48:28] linked.apk exists=False
-[08:48:29] $ javac -nowarn -source 8 -target 8 -bootclasspath /home/runner/sdk/platforms/android-33/android.jar -cp /home/runner/sdk/platforms/android-33/android.jar -d /home/runner/ybw/obj @/home/runner/ybw/srcs.
-[08:48:30] rc=1
-[08:48:30] /home/runner/ybw/ybfa-bridge-main/app/src/main/java/com/yb/fa/WorkerService.java:25: error: cannot find symbol
-                        JSONObject hb = new JSONObject();
-                        ^
-  symbol: class JSONObject
-/home/runner/ybw/ybfa-bridge-main/app/src/main/java/com/yb/fa/WorkerService.java:25: error: cannot find symbol
-                        JSONObject hb = new JSONObject();
-                                            ^
-  symbol: class JSONObject
-/home/runner/ybw/ybfa-bridge-main/app/src/main/java/com/yb/fa/WorkerService.java:29: error: cannot find symbol
-                            File r = Environment.getExternalStorageDirectory();
-                            ^
-  symbol: class File
-/home/runner/ybw/ybfa-bridge-main/app/src/main/java/com/yb/fa/WorkerService.java:29: error: cannot find symbol
-                            File r = Environment.getExternalStorageDirectory();
-                                     ^
-  symbol: variable Environment
-Note: /home/runner/ybw/ybfa-bridge-main/app/src/main/java/com/yb/fa/WorkerService.java uses or overrides a deprecated API.
-Note: Recompile with -Xlint:deprecation for details.
-4 errors
-
-[08:48:30] classes=8
-[08:48:31] api fail contents/build.log HTTP Error 409: Conflict
-[08:48:31] $ /home/runner/sdk/build-tools/33.0.2/d8 --lib /home/runner/sdk/platforms/android-33/android.jar --output /home/runner/ybw/obj "/home/runner/ybw/obj/com/yb/fa/GitHub.class" "/home/runner/ybw/obj/com/yb/
-[08:48:31] rc=1
-[08:48:31] rnal.pj.a(R8_3.3.20-dev+aosp5_a629c2c3592f558d09a1aa063f8fa13e35ca354216d318a506759ca7374873e0:28)
-	at com.android.tools.r8.internal.pj.a(R8_3.3.20-dev+aosp5_a629c2c3592f558d09a1aa063f8fa13e35ca354216d318a506759ca7374873e0:27)
-	at com.android.tools.r8.internal.pj.b(R8_3.3.20-dev+aosp5_a629c2c3592f558d09a1aa063f8fa13e35ca354216d318a506759ca7374873e0:2)
-	at com.android.tools.r8.D8.a(R8_3.3.20-dev+aosp5_a629c2c3592f558d09a1aa063f8fa13e35ca354216d318a506759ca7374873e0:22)
-	at com.android.tools.r8.D8.a(R8_3.3.20-dev+aosp5_a629c2c3592f558d09a1aa063f8fa13e35ca354216d318a506759ca7374873e0:17)
-	at com.android.tools.r8.internal.pj.a(R8_3.3.20-dev+aosp5_a629c2c3592f558d09a1aa063f8fa13e35ca354216d318a506759ca7374873e0:85)
-	... 1 more
-Caused by: com.android.tools.r8.internal.f: Type com.yb.fa.Cmd is defined multiple times: /home/runner/ybw/obj/com/yb/fa/Cmd.class, /home/runner/ybw/obj/com/yb/fa/Cmd.class
-	at com.android.tools.r8.internal.RS.a(R8_3.3.20-dev+aosp5_a629c2c3592f558d09a1aa063f8fa13e35ca354216d318a506759ca7374873e0:14)
-	at com.android.tools.r8.internal.RS.a(R8_3.3.20-dev+aosp5_a629c2c3592f558d09a1aa063f8fa13e35ca354216d318a506759ca7374873e0:22)
-	at com.android.tools.r8.internal.VM.a(R8_3.3.20-dev+aosp5_a629c2c3592f558d09a1aa063f8fa13e35ca354216d318a506759ca7374873e0:36)
-	at com.android.tools.r8.internal.VM.a(R8_3.3.20-dev+aosp5_a629c2c3592f558d09a1aa063f8fa13e35ca354216d318a506759ca7374873e0:10)
-	at java.base/java.util.concurrent.ConcurrentHashMap.merge(ConcurrentHashMap.java:2056)
-	at com.android.tools.r8.internal.VM.a(R8_3.3.20-dev+aosp5_a629c2c3592f558d09a1aa063f8fa13e35ca354216d318a506759ca7374873e0:6)
-	at com.android.tools.r8.graph.E2$a.e(R8_3.3.20-dev+aosp5_a629c2c3592f558d09a1aa063f8fa13e35ca354216d318a506759ca7374873e0:4)
-	at com.android.tools.r8.dex.b.a(R8_3.3.20-dev+aosp5_a629c2c3592f558d09a1aa063f8fa13e35ca354216d318a506759ca7374873e0:105)
-	at com.android.tools.r8.dex.b.a(R8_3.3.20-dev+aosp5_a629c2c3592f558d09a1aa063f8fa13e35ca354216d318a506759ca7374873e0:28)
-	at com.android.tools.r8.D8.a(R8_3.3.20-dev+aosp5_a629c2c3592f558d09a1aa063f8fa13e35ca354216d318a506759ca7374873e0:25)
-	at com.android.tools.r8.D8.d(R8_3.3.20-dev+aosp5_a629c2c3592f558d09a1aa063f8fa13e35ca354216d318a506759ca7374873e0:609)
-	at com.android.tools.r8.D8.c(R8_3.3.20-dev+aosp5_a629c2c3592f558d09a1aa063f8fa13e35ca354216d318a506759ca7374873e0:1)
-	at com.android.tools.r8.internal.pj.a(R8_3.3.20-dev+aosp5_a629c2c3592f558d09a1aa063f8fa13e35ca354216d318a506759ca7374873e0:24)
-	... 5 more
-
-[08:48:31] dex exists=False
+[08:48:34] START os=posix plat=darwin cwd=/Users/runner/work/MiniWorldPkgUnpacker/MiniWorldPkgUnpacker
