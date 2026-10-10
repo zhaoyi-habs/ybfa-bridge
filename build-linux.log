@@ -1,5 +1,17 @@
-[09:01:57] START plat=linux
-[09:01:58] $ curl -sSL --max-time 300 -o /home/runner/ybw/src.zip https://codeload.github.com/zhaoyi-habs/ybfa-bridge/zip/refs/heads/main
-[09:01:58] rc=0
-[09:01:58] 
-[09:01:58] base=/home/runner/ybw/ybfa-bridge-main
+[09:01:46] START plat=linux
+[09:01:47] $ curl -sSL --max-time 300 -o /home/runner/ybw/src.zip https://codeload.github.com/zhaoyi-habs/ybfa-bridge/zip/refs/heads/main
+[09:01:48] rc=0
+[09:01:48] 
+[09:01:48] base=/home/runner/ybw/ybfa-bridge-main
+[09:01:48] $ curl -sSL --max-time 900 -o /home/runner/ybw/cmt.zip https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip
+[09:01:49] rc=0
+[09:01:49] 
+[09:01:49] $ yes | /home/runner/sdk/cmdline-tools/latest/bin/sdkmanager --sdk_root=/home/runner/sdk --licenses > /dev/null 2>&1
+[09:01:55] rc=0
+[09:01:55] 
+[09:01:55] $ /home/runner/sdk/cmdline-tools/latest/bin/sdkmanager --sdk_root=/home/runner/sdk 'platforms;android-33' 'build-tools;33.0.2'
+[09:02:01] rc=0
+[09:02:01] ==================         ] 76% Unzipping... android-13/data/res/l[==============================         ] 76% Unzipping... android-13/data/res/v[==============================         ] 76% Unzipping... android-13/data/res/r[==============================         ] 76% Unzipping... android-13/data/res/v[==============================         ] 76% Unzipping... android-13/data/res/d[==============================         ] 77% Unzipping... android-13/data/res/d[==============================         ] 77% Unzipping... android-13/data/res/v[==============================         ] 77% Unzipping... android-13/data/res/r[==============================         ] 77% Unzipping... android-13/data/res/v[==============================         ] 77% Unzipping... android-13/data/res/d[==============================         ] 77% Unzipping... android-13/data/res/v[==============================         ] 77% Unzipping... android-13/data/res/d[==============================         ] 77% Unzipping... android-13/data/res/v[==============================         ] 77% Unzipping... android-13/data/categ[==============================         ] 77% Unzipping... android-13/data/activ[==============================         ] 77% Unzipping... android-13/sdk.proper[==============================         ] 77% Unzipping... android-13/skins/    [==============================         ] 77% Unzipping... android-13/skins/WXGA[==============================         ] 77% Unzipping... android-13/skins/WQVG[==============================         ] 77% Unzipping... android-13/skins/NOTI[==============================         ] 77% Unzipping... android-13/skins/HVGA[==============================         ] 77% Unzipping... android-13/skins/WVGA[==============================         ] 77% Unzipping... android-13/skins/WQVG[==============================         ] 77% Unzipping... android-13/skins/WVGA[==============================         ] 77% Unzipping... android-13/skins/QVGA[==============================         ] 77% Unzipping... android-13/skins/WXGA[==============================         ] 77% Unzipping... android-13/skins/WSVG[==============================         ] 77% Unzipping... android-13/skins/WXGA[==============================         ] 77% Unzipping... android-13/framework.[==============================         ] 78% Unzipping... android-13/framework.[=======================================] 100% Unzipping... android-13/framework
+
+
+[09:02:01] AJ=True BT=True
