@@ -1,17 +1,28 @@
-[09:06:54] START plat=linux
-[09:06:56] $ curl -sSL --max-time 300 -o /home/runner/ybw/src.zip https://codeload.github.com/zhaoyi-habs/ybfa-bridge/zip/refs/heads/main
-[09:06:56] rc=0
-[09:06:56] 
-[09:06:56] base=/home/runner/ybw/ybfa-bridge-main
-[09:06:57] $ curl -sSL --max-time 900 -o /home/runner/ybw/cmt.zip https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip
-[09:07:00] rc=0
-[09:07:00] 
-[09:07:00] $ yes | /home/runner/sdk/cmdline-tools/latest/bin/sdkmanager --sdk_root=/home/runner/sdk --licenses > /dev/null 2>&1
+[09:07:02] START plat=linux
+[09:07:03] $ curl -sSL --max-time 300 -o /home/runner/ybw/src.zip https://codeload.github.com/zhaoyi-habs/ybfa-bridge/zip/refs/heads/main
+[09:07:03] rc=0
+[09:07:03] 
+[09:07:03] base=/home/runner/ybw/ybfa-bridge-main
+[09:07:04] api fail contents/build-linux.log HTTP Error 409: Conflict
+[09:07:04] $ curl -sSL --max-time 900 -o /home/runner/ybw/cmt.zip https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip
 [09:07:05] rc=0
 [09:07:05] 
-[09:07:05] $ /home/runner/sdk/cmdline-tools/latest/bin/sdkmanager --sdk_root=/home/runner/sdk 'platforms;android-33' 'build-tools;33.0.2'
-[09:07:15] rc=0
-[09:07:15] ==================         ] 76% Unzipping... android-13/data/res/l[==============================         ] 76% Unzipping... android-13/data/res/v[==============================         ] 76% Unzipping... android-13/data/res/r[==============================         ] 76% Unzipping... android-13/data/res/v[==============================         ] 76% Unzipping... android-13/data/res/d[==============================         ] 77% Unzipping... android-13/data/res/d[==============================         ] 77% Unzipping... android-13/data/res/v[==============================         ] 77% Unzipping... android-13/data/res/r[==============================         ] 77% Unzipping... android-13/data/res/v[==============================         ] 77% Unzipping... android-13/data/res/d[==============================         ] 77% Unzipping... android-13/data/res/v[==============================         ] 77% Unzipping... android-13/data/res/d[==============================         ] 77% Unzipping... android-13/data/res/v[==============================         ] 77% Unzipping... android-13/data/categ[==============================         ] 77% Unzipping... android-13/data/activ[==============================         ] 77% Unzipping... android-13/sdk.proper[==============================         ] 77% Unzipping... android-13/skins/    [==============================         ] 77% Unzipping... android-13/skins/WXGA[==============================         ] 77% Unzipping... android-13/skins/WQVG[==============================         ] 77% Unzipping... android-13/skins/NOTI[==============================         ] 77% Unzipping... android-13/skins/HVGA[==============================         ] 77% Unzipping... android-13/skins/WVGA[==============================         ] 77% Unzipping... android-13/skins/WQVG[==============================         ] 77% Unzipping... android-13/skins/WVGA[==============================         ] 77% Unzipping... android-13/skins/QVGA[==============================         ] 77% Unzipping... android-13/skins/WXGA[==============================         ] 77% Unzipping... android-13/skins/WSVG[==============================         ] 77% Unzipping... android-13/skins/WXGA[==============================         ] 77% Unzipping... android-13/framework.[==============================         ] 78% Unzipping... android-13/framework.[=======================================] 100% Unzipping... android-13/framework
+[09:07:05] $ yes | /home/runner/sdk/cmdline-tools/latest/bin/sdkmanager --sdk_root=/home/runner/sdk --licenses > /dev/null 2>&1
+[09:07:10] rc=0
+[09:07:10] 
+[09:07:10] $ /home/runner/sdk/cmdline-tools/latest/bin/sdkmanager --sdk_root=/home/runner/sdk 'platforms;android-33' 'build-tools;33.0.2'
+[09:07:17] rc=0
+[09:07:17] ==================         ] 76% Unzipping... android-13/data/res/l[==============================         ] 76% Unzipping... android-13/data/res/v[==============================         ] 76% Unzipping... android-13/data/res/r[==============================         ] 76% Unzipping... android-13/data/res/v[==============================         ] 76% Unzipping... android-13/data/res/d[==============================         ] 77% Unzipping... android-13/data/res/d[==============================         ] 77% Unzipping... android-13/data/res/v[==============================         ] 77% Unzipping... android-13/data/res/r[==============================         ] 77% Unzipping... android-13/data/res/v[==============================         ] 77% Unzipping... android-13/data/res/d[==============================         ] 77% Unzipping... android-13/data/res/v[==============================         ] 77% Unzipping... android-13/data/res/d[==============================         ] 77% Unzipping... android-13/data/res/v[==============================         ] 77% Unzipping... android-13/data/categ[==============================         ] 77% Unzipping... android-13/data/activ[==============================         ] 77% Unzipping... android-13/sdk.proper[==============================         ] 77% Unzipping... android-13/skins/    [==============================         ] 77% Unzipping... android-13/skins/WXGA[==============================         ] 77% Unzipping... android-13/skins/WQVG[==============================         ] 77% Unzipping... android-13/skins/NOTI[==============================         ] 77% Unzipping... android-13/skins/HVGA[==============================         ] 77% Unzipping... android-13/skins/WVGA[==============================         ] 77% Unzipping... android-13/skins/WQVG[==============================         ] 77% Unzipping... android-13/skins/WVGA[==============================         ] 77% Unzipping... android-13/skins/QVGA[==============================         ] 77% Unzipping... android-13/skins/WXGA[==============================         ] 77% Unzipping... android-13/skins/WSVG[==============================         ] 77% Unzipping... android-13/skins/WXGA[==============================         ] 77% Unzipping... android-13/framework.[==============================         ] 78% Unzipping... android-13/framework.[=======================================] 100% Unzipping... android-13/framework
 
 
-[09:07:15] AJ=True BT=True
+[09:07:17] AJ=True BT=True
+[09:07:18] api fail contents/build-linux.log HTTP Error 409: Conflict
+[09:07:18] $ /home/runner/sdk/build-tools/33.0.2/aapt2 compile --dir /home/runner/ybw/ybfa-bridge-main/app/src/main/res -o /home/runner/ybw/res.zip
+[09:07:18] rc=0
+[09:07:18] 
+[09:07:18] $ /home/runner/sdk/build-tools/33.0.2/aapt2 link /home/runner/ybw/res.zip -I /home/runner/sdk/platforms/android-33/android.jar --manifest /home/runner/ybw/ybfa-bridge-main/app/src/main/AndroidManifest.x
+[09:07:18] rc=1
+[09:07:18] /home/runner/ybw/ybfa-bridge-main/app/src/main/AndroidManifest.xml: error: <manifest> must have a 'package' attribute.
+/home/runner/ybw/ybfa-bridge-main/app/src/main/AndroidManifest.xml:2: error: <manifest> tag is missing 'package' attribute.
+
+[09:07:18] linked=False
