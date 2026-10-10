@@ -1,96 +1,1 @@
-[09:43:55] START plat=linux
-[09:43:56] $ curl -sSL --max-time 300 -o /home/runner/ybw/src.zip https://codeload.github.com/zhaoyi-habs/ybfa-bridge/zip/refs/heads/main
-[09:43:56] rc=0
-[09:43:56] 
-[09:43:56] base=/home/runner/ybw/ybfa-bridge-main
-[09:43:57] $ curl -sSL --max-time 900 -o /home/runner/ybw/cmt.zip https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip
-[09:43:58] rc=0
-[09:43:58] 
-[09:43:58] $ yes | /home/runner/sdk/cmdline-tools/latest/bin/sdkmanager --sdk_root=/home/runner/sdk --licenses > /dev/null 2>&1
-[09:44:03] rc=0
-[09:44:03] 
-[09:44:03] $ /home/runner/sdk/cmdline-tools/latest/bin/sdkmanager --sdk_root=/home/runner/sdk 'platforms;android-33' 'build-tools;33.0.2'
-[09:44:09] rc=0
-[09:44:09] ==================         ] 76% Unzipping... android-13/data/res/l[==============================         ] 76% Unzipping... android-13/data/res/v[==============================         ] 76% Unzipping... android-13/data/res/r[==============================         ] 76% Unzipping... android-13/data/res/v[==============================         ] 76% Unzipping... android-13/data/res/d[==============================         ] 77% Unzipping... android-13/data/res/d[==============================         ] 77% Unzipping... android-13/data/res/v[==============================         ] 77% Unzipping... android-13/data/res/r[==============================         ] 77% Unzipping... android-13/data/res/v[==============================         ] 77% Unzipping... android-13/data/res/d[==============================         ] 77% Unzipping... android-13/data/res/v[==============================         ] 77% Unzipping... android-13/data/res/d[==============================         ] 77% Unzipping... android-13/data/res/v[==============================         ] 77% Unzipping... android-13/data/categ[==============================         ] 77% Unzipping... android-13/data/activ[==============================         ] 77% Unzipping... android-13/sdk.proper[==============================         ] 77% Unzipping... android-13/skins/    [==============================         ] 77% Unzipping... android-13/skins/WXGA[==============================         ] 77% Unzipping... android-13/skins/WQVG[==============================         ] 77% Unzipping... android-13/skins/NOTI[==============================         ] 77% Unzipping... android-13/skins/HVGA[==============================         ] 77% Unzipping... android-13/skins/WVGA[==============================         ] 77% Unzipping... android-13/skins/WQVG[==============================         ] 77% Unzipping... android-13/skins/WVGA[==============================         ] 77% Unzipping... android-13/skins/QVGA[==============================         ] 77% Unzipping... android-13/skins/WXGA[==============================         ] 77% Unzipping... android-13/skins/WSVG[==============================         ] 77% Unzipping... android-13/skins/WXGA[==============================         ] 77% Unzipping... android-13/framework.[==============================         ] 78% Unzipping... android-13/framework.[=======================================] 100% Unzipping... android-13/framework
-
-
-[09:44:09] AJ=True BT=True
-[09:44:10] $ /home/runner/sdk/build-tools/33.0.2/aapt2 compile --dir /home/runner/ybw/ybfa-bridge-main/app/src/main/res -o /home/runner/ybw/res.zip
-[09:44:10] rc=0
-[09:44:10] 
-[09:44:10] $ /home/runner/sdk/build-tools/33.0.2/aapt2 link /home/runner/ybw/res.zip -I /home/runner/sdk/platforms/android-33/android.jar --manifest /home/runner/ybw/ybfa-bridge-main/app/src/main/AndroidManifest.x
-[09:44:10] rc=0
-[09:44:10] 
-[09:44:10] linked=True
-[09:44:11] $ javac -nowarn -source 8 -target 8 -bootclasspath /home/runner/sdk/platforms/android-33/android.jar -cp /home/runner/sdk/platforms/android-33/android.jar -d /home/runner/ybw/obj @/home/runner/ybw/srcs.
-[09:44:13] rc=0
-[09:44:13] Note: /home/runner/ybw/ybfa-bridge-main/app/src/main/java/com/yb/fa/WorkerService.java uses or overrides a deprecated API.
-Note: Recompile with -Xlint:deprecation for details.
-
-[09:44:13] classes=12
-[09:44:14] api fail contents/build-linux.log HTTP Error 409: Conflict
-[09:44:14] $ cd /home/runner/ybw/obj && jar cf /home/runner/ybw/classes.jar .
-[09:44:14] rc=0
-[09:44:14] 
-[09:44:14] $ /home/runner/sdk/build-tools/33.0.2/d8 --lib /home/runner/sdk/platforms/android-33/android.jar --output /home/runner/ybw/obj /home/runner/ybw/classes.jar
-[09:44:15] rc=0
-[09:44:15] 
-[09:44:15] dex=True
-[09:44:16] $ /home/runner/sdk/build-tools/33.0.2/zipalign -f 4 /home/runner/ybw/unsigned.apk /home/runner/ybw/aligned.apk
-[09:44:16] rc=0
-[09:44:16] 
-[09:44:16] $ keytool -genkeypair -v -keystore /home/runner/ybw/yb.jks -alias yb -keyalg RSA -keysize 2048 -validity 10000 -storepass 123456 -keypassword 123456 -dname "CN=yb"
-[09:44:16] rc=1
-[09:44:16] Illegal option:  -keypassword
-keytool -genkeypair [OPTION]...
-
-Generates a key pair
-
-Options:
-
- -alias <alias>          alias name of the entry to process
- -keyalg <alg>           key algorithm name
- -keysize <size>         key bit size
- -groupname <name>       Group name. For example, an Elliptic Curve name.
- -sigalg <alg>           signature algorithm name
- -dname <name>           distinguished name
- -startdate <date>       certificate validity start date/time
- -ext <value>            X.509 extension
- -validity <days>        validity number of days
- -keypass <arg>          key password
- -keystore <keystore>    keystore name
- -signer <alias>         signer alias
- -signerkeypass <arg>    signer key password
- -storepass <arg>        keystore password
- -storetype <type>       keystore type
- -providername <name>    provider name
- -addprovider <name>     add security provider by name (e.g. SunPKCS11)
-   [-providerarg <arg>]    configure argument for -addprovider
- -providerclass <class>  add security provider by fully-qualified class name
-   [-providerarg <arg>]    configure argument for -providerclass
- -providerpath <list>    provider classpath
- -v                      verbose output
- -protected              password through protected mechanism
-
-Use "keytool -?, -h, or --help" for this help message
-
-[09:44:16] $ keytool -genkeypair -v -keystore /home/runner/ybw/yb.jks -alias yb -keyalg RSA -keysize 2048 -validity 10000 -storepass 123456 -keypass 123456 -dname "CN=yb"
-[09:44:17] rc=0
-[09:44:17] Generating 2,048 bit RSA key pair and self-signed certificate (SHA256withRSA) with a validity of 10,000 days
-	for: CN=yb
-[Storing /home/runner/ybw/yb.jks]
-
-[09:44:17] $ /home/runner/sdk/build-tools/33.0.2/apksigner sign --ks /home/runner/ybw/yb.jks --ks-pass pass:123456 --key-pass pass:123456 --out /home/runner/ybw/YBFileAgent.apk /home/runner/ybw/aligned.apk
-[09:44:17] rc=0
-[09:44:17] 
-[09:44:17] APK=20871
-[09:44:19] api fail releases/assets/627526412 Expecting value: line 1 column 1 (char 0)
-[09:44:19] APK UPLOADED YBFileAgent.apk 20871
-[09:44:19] $ javac -nowarn -source 8 -target 8 -bootclasspath /home/runner/sdk/platforms/android-33/android.jar -cp /home/runner/sdk/platforms/android-33/android.jar:/home/runner/ybw/obj -d /home/runner/ybw/pdx /h
-[09:44:20] rc=0
-[09:44:20] 
-[09:44:20] $ /home/runner/sdk/build-tools/33.0.2/d8 --lib /home/runner/sdk/platforms/android-33/android.jar --output /home/runner/ybw/pdx /home/runner/ybw/pdx/Payload.class
-[09:44:21] rc=0
-[09:44:21] 
-[09:44:22] api fail contents/payload/payload.dex.json HTTP Error 409: Conflict
-[09:44:22] PAYLOAD UPLOADED 12336
+[10:02:24] START plat=linux
