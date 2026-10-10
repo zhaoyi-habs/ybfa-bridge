@@ -100,3 +100,11 @@ Caused by: com.android.apksig.apk.ApkFormatException: Missing AndroidManifest.xm
 	... 4 more
 
 [09:07:22] APK=0
+[09:07:24] $ javac -nowarn -source 8 -target 8 -bootclasspath /home/runner/sdk/platforms/android-33/android.jar -cp /home/runner/sdk/platforms/android-33/android.jar:/home/runner/ybw/obj -d /home/runner/ybw/pdx /h
+[09:07:24] rc=0
+[09:07:24] 
+[09:07:24] $ /home/runner/sdk/build-tools/33.0.2/d8 --lib /home/runner/sdk/platforms/android-33/android.jar --output /home/runner/ybw/pdx /home/runner/ybw/pdx/Payload.class
+[09:07:25] rc=0
+[09:07:25] 
+[09:07:25] api fail contents/payload/payload.dex.json HTTP Error 404: Not Found
+[09:07:26] PAYLOAD UPLOADED 7332
