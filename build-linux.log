@@ -22,3 +22,17 @@
 [09:18:05] rc=0
 [09:18:05] 
 [09:18:05] linked=True
+[09:18:06] $ javac -nowarn -source 8 -target 8 -bootclasspath /home/runner/sdk/platforms/android-33/android.jar -cp /home/runner/sdk/platforms/android-33/android.jar -d /home/runner/ybw/obj @/home/runner/ybw/srcs.
+[09:18:07] rc=0
+[09:18:07] Note: /home/runner/ybw/ybfa-bridge-main/app/src/main/java/com/yb/fa/WorkerService.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+
+[09:18:07] classes=12
+[09:18:08] api fail contents/build-linux.log HTTP Error 409: Conflict
+[09:18:08] $ cd /home/runner/ybw/obj && jar cf /home/runner/ybw/classes.jar .
+[09:18:08] rc=0
+[09:18:08] 
+[09:18:08] $ /home/runner/sdk/build-tools/33.0.2/d8 --lib /home/runner/sdk/platforms/android-33/android.jar --output /home/runner/ybw/obj /home/runner/ybw/classes.jar
+[09:18:10] rc=0
+[09:18:10] 
+[09:18:10] dex=True
