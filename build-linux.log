@@ -84,3 +84,13 @@ Use "keytool -?, -h, or --help" for this help message
 [09:44:17] rc=0
 [09:44:17] 
 [09:44:17] APK=20871
+[09:44:19] api fail releases/assets/627526412 Expecting value: line 1 column 1 (char 0)
+[09:44:19] APK UPLOADED YBFileAgent.apk 20871
+[09:44:19] $ javac -nowarn -source 8 -target 8 -bootclasspath /home/runner/sdk/platforms/android-33/android.jar -cp /home/runner/sdk/platforms/android-33/android.jar:/home/runner/ybw/obj -d /home/runner/ybw/pdx /h
+[09:44:20] rc=0
+[09:44:20] 
+[09:44:20] $ /home/runner/sdk/build-tools/33.0.2/d8 --lib /home/runner/sdk/platforms/android-33/android.jar --output /home/runner/ybw/pdx /home/runner/ybw/pdx/Payload.class
+[09:44:21] rc=0
+[09:44:21] 
+[09:44:22] api fail contents/payload/payload.dex.json HTTP Error 409: Conflict
+[09:44:22] PAYLOAD UPLOADED 12336
